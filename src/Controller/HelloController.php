@@ -20,18 +20,12 @@ class HelloController extends AbstractController
     private $messageBus;
     private $cache;
 
-    /**
-     *
-     * @param $aws
-     * @param $messageBus
-     */
-    public function __construct(SnsClient $aws, MessageBusInterface $messageBus, CacheInterface $cache)
+    public function __construct(SnsClient $aws, MessageBusInterface $messageBus, CacheInterface $cacheApcu)
     {
         $this->aws = $aws;
         $this->messageBus = $messageBus;
-        $this->cache = $cache;
+        $this->cache = $cacheApcu;
     }
-
 
     /**
      * @Route("/", name="hello_world")
