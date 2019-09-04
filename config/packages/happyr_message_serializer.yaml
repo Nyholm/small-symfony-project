@@ -1,0 +1,14 @@
+services:
+  Happyr\MessageSerializer\Serializer:
+    autowire: true
+
+  Happyr\MessageSerializer\Transformer\MessageToArrayInterface: '@happyr.message_serializer.transformer'
+  happyr.message_serializer.transformer:
+    class: Happyr\MessageSerializer\Transformer\Transformer
+    arguments: [!tagged happyr.message_serializer.transformer]
+
+
+  Happyr\MessageSerializer\Hydrator\ArrayToMessageInterface: '@happyr.message_serializer.hydrator'
+  happyr.message_serializer.hydrator:
+    class: Happyr\MessageSerializer\Hydrator\Hydrator
+    arguments: [!tagged happyr.message_serializer.hydrator]

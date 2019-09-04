@@ -1,0 +1,10 @@
+services:
+  Aws\Sns\SnsClient:
+    factory: [Aws\Sns\SnsClient, factory]
+    arguments:
+      -
+        region: "eu-central-1"
+        version: '2010-03-31'
+        credentials:
+          key: "123"
+          secret: "abc"
