@@ -2,6 +2,9 @@
     "aws/aws-sdk-php": {
         "version": "3.110.8"
     },
+    "bref/bref": {
+        "version": "0.5.5"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -56,6 +59,12 @@
     "happyr/message-serializer": {
         "version": "0.4.0"
     },
+    "hollodotme/fast-cgi-client": {
+        "version": "v2.7.2"
+    },
+    "mnapoli/silly": {
+        "version": "1.7.1"
+    },
     "monolog/monolog": {
         "version": "1.24.0"
     },
@@ -73,6 +82,9 @@
         "files": [
             "config/packages/nyholm_psr7.yaml"
         ]
+    },
+    "php-di/invoker": {
+        "version": "2.0.0"
     },
     "php-http/discovery": {
         "version": "1.7.0"
@@ -272,6 +284,9 @@
     },
     "symfony/polyfill-php73": {
         "version": "v1.12.0"
+    },
+    "symfony/process": {
+        "version": "v4.3.4"
     },
     "symfony/profiler-pack": {
         "version": "v1.0.4"
