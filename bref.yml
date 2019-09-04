@@ -19,6 +19,7 @@ functions:
       - ${bref:layer.php-73-fpm}
     events:
       -   http: 'ANY /'
+
   phpfunction:
     handler: public/index.php
     timeout: 28
