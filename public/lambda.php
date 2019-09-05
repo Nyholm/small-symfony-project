@@ -6,9 +6,7 @@ use App\Kernel;
 use Bref\Http\LambdaResponse;
 use Bref\Http\LambdaRequest;
 
-
-
-lambda(function (array $event) use ($kernel) {
+lambda(function (array $event) {
     $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
     $request = LambdaRequest::create($event)->getSymfonyRequest();
     $response = $kernel->handle($request);
