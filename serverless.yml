@@ -1,0 +1,41 @@
+service: bref-demo
+
+provider:
+  name: aws
+  region: eu-west-1
+  runtime: provided
+  environment:
+    # Symfony environment variables
+    APP_ENV: prod
+    APP_SECRET: 6b566e17cf0965eb4db2fef5f41bae18
+    BREF_MEMORY_MAX: 1000000000
+    BREF_LOOP_MAX: 50
+
+plugins:
+  - ./vendor/bref/bref
+
+functions:
+  bref_fpm:
+    handler: public/index.php
+    timeout: 28
+    layers:
+      - ${bref:layer.php-73-fpm}
+    events:
+      -   http: 'GET /fpm'
+
+  bref_function:
+    handler: public/lambda.php
+    timeout: 28
+    layers:
+      - ${bref:layer.php-73}
+    events:
+      -   http: 'GET /func'
+
+  bref_keepalive:
+    handler: public/lambda_keep_alive.php
+    timeout: 28
+    layers:
+      - ${bref:layer.php-73}
+      - 'arn:aws:lambda:eu-west-1:863577320427:layer:bref-keep-alive:1'
+    events:
+      -   http: 'GET /alive'

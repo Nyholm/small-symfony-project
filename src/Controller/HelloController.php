@@ -28,9 +28,9 @@ class HelloController extends AbstractController
     }
 
     /**
-     * @Route("/", name="hello_world")
+     * @Route("/{name}", name="hello_world")
      */
-    public function world()
+    public function world(string $name = null)
     {
         // Crete some objects
         $request = Psr17FactoryDiscovery::findRequestFactory()->createRequest('GET', '/foo');

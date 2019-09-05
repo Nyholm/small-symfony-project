@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "823f4827b591d4a47c00252dc7916008",
+    "content-hash": "3125920dc2dfc189874ed72d206d50a3",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.110.8",
+            "version": "3.110.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1c4ec294479c0ab1d231431b04b2b2f14a72407f"
+                "reference": "705fc1ffe05747e6789b19480764ebcd06995911"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1c4ec294479c0ab1d231431b04b2b2f14a72407f",
-                "reference": "1c4ec294479c0ab1d231431b04b2b2f14a72407f",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/705fc1ffe05747e6789b19480764ebcd06995911",
+                "reference": "705fc1ffe05747e6789b19480764ebcd06995911",
                 "shasum": ""
             },
             "require": {
@@ -87,20 +87,20 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-09-03T19:34:31+00:00"
+            "time": "2019-09-05T18:11:21+00:00"
         },
         {
             "name": "bref/bref",
-            "version": "0.5.5",
+            "version": "dev-dont-kill-the-chef",
             "source": {
                 "type": "git",
-                "url": "https://github.com/brefphp/bref.git",
-                "reference": "0120e12eacaf7a7d1215d1a7a02c3fa857d66407"
+                "url": "https://github.com/Nyholm/bref.git",
+                "reference": "e56a18ce45b2bf8ae2b18e52c83a5816e7e1e761"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brefphp/bref/zipball/0120e12eacaf7a7d1215d1a7a02c3fa857d66407",
-                "reference": "0120e12eacaf7a7d1215d1a7a02c3fa857d66407",
+                "url": "https://api.github.com/repos/Nyholm/bref/zipball/e56a18ce45b2bf8ae2b18e52c83a5816e7e1e761",
+                "reference": "e56a18ce45b2bf8ae2b18e52c83a5816e7e1e761",
                 "shasum": ""
             },
             "require": {
@@ -119,6 +119,7 @@
                 "guzzlehttp/guzzle": "^6.3",
                 "phpstan/phpstan": "^0.11.5",
                 "phpunit/phpunit": "^6.5",
+                "symfony/http-foundation": "^4.3",
                 "zendframework/zend-diactoros": "^1.6|^2.0"
             },
             "bin": [
@@ -133,7 +134,11 @@
                     "src/functions.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Bref\\Test\\": "tests"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -146,7 +151,10 @@
                 "lambda",
                 "serverless"
             ],
-            "time": "2019-08-29T10:13:56+00:00"
+            "support": {
+                "source": "https://github.com/Nyholm/bref/tree/dont-kill-the-chef"
+            },
+            "time": "2019-09-05T19:19:28+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -1174,16 +1182,16 @@
         },
         {
             "name": "nyholm/psr7",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nyholm/psr7.git",
-                "reference": "27c828a165ff936f9fe9056baa9cabe0c70a423c"
+                "reference": "55ff6b76573f5b242554c9775792bd59fb52e11c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/27c828a165ff936f9fe9056baa9cabe0c70a423c",
-                "reference": "27c828a165ff936f9fe9056baa9cabe0c70a423c",
+                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/55ff6b76573f5b242554c9775792bd59fb52e11c",
+                "reference": "55ff6b76573f5b242554c9775792bd59fb52e11c",
                 "shasum": ""
             },
             "require": {
@@ -1232,7 +1240,7 @@
                 "psr-17",
                 "psr-7"
             ],
-            "time": "2019-08-22T18:22:08+00:00"
+            "time": "2019-09-05T13:24:16+00:00"
         },
         {
             "name": "php-di/invoker",
@@ -5463,7 +5471,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "bref/bref": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
