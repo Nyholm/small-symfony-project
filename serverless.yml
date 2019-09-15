@@ -9,7 +9,7 @@ provider:
     APP_ENV: prod
     APP_SECRET: 6b566e17cf0965eb4db2fef5f41bae18
     BREF_MEMORY_MAX: 1000000000
-    BREF_LOOP_MAX: 50
+    BREF_LOOP_MAX: 5
 
 plugins:
   - ./vendor/bref/bref
@@ -21,7 +21,7 @@ functions:
     layers:
       - ${bref:layer.php-73-fpm}
     events:
-      -   http: 'GET /fpm'
+      -   http: 'ANY /fpm'
 
   bref_function:
     handler: public/lambda.php
@@ -29,7 +29,7 @@ functions:
     layers:
       - ${bref:layer.php-73}
     events:
-      -   http: 'GET /func'
+      -   http: 'ANY /func'
 
   bref_keepalive:
     handler: public/lambda_keep_alive.php
@@ -38,4 +38,4 @@ functions:
       - ${bref:layer.php-73}
       - 'arn:aws:lambda:eu-west-1:863577320427:layer:bref-keep-alive:1'
     events:
-      -   http: 'GET /alive'
+      -   http: 'ANY /alive'

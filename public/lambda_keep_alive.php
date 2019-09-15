@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Kernel;
+use Bref\Context\Context;
 use Bref\Http\LambdaResponse;
 use Bref\Http\LambdaRequest;
 
@@ -18,7 +19,8 @@ include_once dirname(__DIR__).'/config/bootstrap.php';
 
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 
-return function(LambdaRequest $request) use ($kernel) {
+return function(LambdaRequest $request, Context $context) use ($kernel) {
+    echo json_encode($request->getRawEvent());
     $sfRequest = $request->getSymfonyRequest();
 
     $kernel->reboot($kernel->getCacheDir());
