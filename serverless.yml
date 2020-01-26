@@ -4,12 +4,6 @@ provider:
   name: aws
   region: eu-west-1
   runtime: provided
-  environment:
-    # Symfony environment variables
-    APP_ENV: prod
-    APP_SECRET: 6b566e17cf0965eb4db2fef5f41bae18
-    BREF_MEMORY_MAX: 1000000000
-    BREF_LOOP_MAX: 5
 
 plugins:
   - ./vendor/bref/bref
@@ -19,23 +13,48 @@ functions:
     handler: public/index.php
     timeout: 28
     layers:
-      - ${bref:layer.php-73-fpm}
+      - ${bref:layer.php-74-fpm}
     events:
       -   http: 'ANY /fpm'
+    environment:
+      # Symfony environment variables
+      APP_ENV: prod
+      APP_SECRET: 6b566e17cf0965eb4db2fef5f41bae18
+
+  bref_fpm_new:
+    handler: public/index.php
+    timeout: 28
+    layers:
+      - 'arn:aws:lambda:eu-west-1:403367587399:layer:php-74-fpm:1'
+    events:
+      -   http: 'ANY /fpm-new'
+    environment:
+      # Symfony environment variables
+      APP_ENV: prod
+      APP_SECRET: 6b566e17cf0965eb4db2fef5f41bae18
 
   bref_function:
-    handler: public/lambda.php
+    handler: bin/lambda.php
     timeout: 28
     layers:
-      - ${bref:layer.php-73}
+      - 'arn:aws:lambda:eu-west-1:403367587399:layer:php-74:1'
     events:
       -   http: 'ANY /func'
+    environment:
+      # Symfony environment variables
+      APP_ENV: prod
+      APP_SECRET: 6b566e17cf0965eb4db2fef5f41bae18
+      BREF_LOOP_MAX: 1
 
   bref_keepalive:
-    handler: public/lambda_keep_alive.php
+    handler: bin/lambda.php
     timeout: 28
     layers:
-      - ${bref:layer.php-73}
-      - 'arn:aws:lambda:eu-west-1:863577320427:layer:bref-keep-alive:1'
+      - 'arn:aws:lambda:eu-west-1:403367587399:layer:php-74:1'
     events:
       -   http: 'ANY /alive'
+    environment:
+      # Symfony environment variables
+      APP_ENV: prod
+      APP_SECRET: 6b566e17cf0965eb4db2fef5f41bae18
+      BREF_LOOP_MAX: 500
